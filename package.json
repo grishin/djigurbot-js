@@ -1,0 +1,16 @@
+{
+  "name": "djigurbot-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "install": "^0.6.0",
+    "node-telegram-bot-api": "^0.21.1",
+    "npm": "^3.8.1"
+  }
+}
