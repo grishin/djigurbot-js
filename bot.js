@@ -1,32 +1,34 @@
+var toasts = require("./toasts.js");
+
 var TelegramBot = require('node-telegram-bot-api');
 var bot = new TelegramBot(process.env.DJIGURBOT_TELEGRAMAPIKEY, {polling: true});
 
-bot.onText(/\/hi/, function (msg, match) {
-  bot.sendMessage(msg.from.id, `Привет, ${msg.from.first_name}`);
+bot.onText(/\/hi/,  (msg, match) => {
+  bot.sendMessage(msg.chat.id, `Привет, ${msg.from.first_name}`);
 });
 
-bot.onText(/костя/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, "Костя крутой!");
+bot.onText(/костя/i, (msg, match) => {
+  bot.sendMessage(msg.chat.id, "Костя крутой!");
 });
 
-bot.onText(/твоя!/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, "Нееееет, твоя!");
+bot.onText(/твоя!/i, (msg, match) => {
+  bot.sendMessage(msg.chat.id, "Нееееет, твоя!");
 });
 
-bot.onText(/крутой/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, `Нееееет, ${msg.from.first_name}, это ты крутой!`);
+bot.onText(/крутой/i, (msg, match) => {
+  bot.sendMessage(msg.chat.id, `Нееееет, ${msg.from.first_name}, это ты крутой!`);
 });
 
-bot.onText(/сокиабле/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, "Сокиабле? ЧОБЛЯ?");
+bot.onText(/сокиабле/i, (msg, match) => {
+  bot.sendMessage(msg.chat.id, "Сокиабле? ЧОБЛЯ?");
 });
 
-bot.onText(/доброе утро/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, `И тебе наидобрейшего утра, ${msg.from.first_name}!`);
+bot.onText(/доброе утро/i, (msg, match) => {
+  bot.sendMessage(msg.chat.id, `И тебе наидобрейшего утра, ${msg.from.first_name}!`);
 });
 
 bot.onText(/поздравляй!/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, `С 8 марта поздравляем вас, коллеги,
+  bot.sendMessage(msg.chat.id, `С 8 марта поздравляем вас, коллеги,
 От души хотим вам пожелать,
 Чтоб совместные победы и успехи
 Дали нам возможность процветать!
@@ -41,5 +43,9 @@ bot.onText(/поздравляй!/i, function (msg, match) {
 });
 
 bot.onText(/Тост!/i, function (msg, match) {
-  bot.sendMessage(msg.from.id, "Опять бухать!?!? Работать кто будет?");
+  bot.sendMessage(msg.chat.id, "Опять бухать!?!? Работать кто будет?");
+});
+
+bot.onText(/Тост говори!/i, function (msg, match) {
+  bot.sendMessage(msg.chat.id, toasts.getRandomToast());
 });
